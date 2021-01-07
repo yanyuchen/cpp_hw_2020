@@ -1,0 +1,36 @@
+Liar Liar
+Total Score: 291, Average Score: 3.38372, Number of Rating: 86
+
+Silence of the Lambs, The
+Total Score: 164, Average Score: 4.20513, Number of Rating: 39
+
+Star Wars
+Total Score: 380, Average Score: 4.36782, Number of Rating: 87
+
+Apollo 13
+Total Score: 101, Average Score: 3.88462, Number of Rating: 26
+
+Men in Black
+Total Score: 158, Average Score: 3.59091, Number of Rating: 44
+
+Dead Man Walking
+Total Score: 126, Average Score: 4.2, Number of Rating: 30
+
+Titanic
+Total Score: 303, Average Score: 4.26761, Number of Rating: 71
+
+Toy Story
+Total Score: 240, Average Score: 4.0678, Number of Rating: 59
+
+Empire Strikes Back, The
+Total Score: 153, Average Score: 4.25, Number of Rating: 36
+
+Pulp Fiction
+Total Score: 181, Average Score: 4.02222, Number of Rating: 45
+
+Full Monty, The
+Total Score: 245, Average Score: 4.08333, Number of Rating: 60
+
+Star Trek: First Contact
+Total Score: 165, Average Score: 3.92857, Number of Rating: 42
+
