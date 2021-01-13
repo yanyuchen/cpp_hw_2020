@@ -24,69 +24,64 @@ int main(){
 	dist["BD"] = dist["DB"] = 10;
 	dist["CD"] = dist["DC"] = 1;
 	
-	cout << "All the possible tours and their distance." << endl;
+	cout << "All the possible tours and their distance: " << endl;
 	for (int i = 0; i< 4; i++){
 		for (int j = 0; j < 4; j++){
 			if (i == j){
 				continue;
 			} else{
 				for (int k = 0; k < 4; k++){
-				if (i == k || j == k){
-					continue;
-				} else{
-					for (int l = 0; l < 4; l++){
-					if (l == i || l == j || l == k){
+					if (i == k || j == k){
 						continue;
 					} else{
-						char tour[6] = {city[i], city[j], city[k], city[l], city[i]}; // each tour
-						dist_sum = 0;
-						for (int m = 0; m < 5; m++){
-							char pth[3] = {tour[m], tour[m+1]}; // path between the city in the tour
-							dist_sum += dist[pth]; // sum over the distances of each city
-							
-						}
-						if (min > dist_sum){
-							min = dist_sum; // choose the min distance one
-						}
-						cout << tour << ": " << dist_sum << endl;
+						for (int l = 0; l < 4; l++){
+							if (l == i || l == j || l == k){
+								continue;
+							} else{
+								char tour[6] = {city[i], city[j], city[k], city[l], city[i]}; // each tour
+								dist_sum = 0;
+								for (int m = 0; m < 5; m++){
+									char pth[3] = {tour[m], tour[m+1]}; // path between the city in the tour
+									dist_sum += dist[pth]; // sum over the distances of each city
+								}
+								if (min > dist_sum){
+									min = dist_sum; // choose the min distance one
+								}
+								cout << tour << ": " << dist_sum << endl;
+							}
+						}	
 					}
-					
 				}	
-				}
-			}	
 			}
 		}
 	}
-	
-	cout << "The miniance distance is " << min << " with the tour(s): " << endl;;
+	cout << "\nThe miniance distance is " << min << " with the tour(s): " << endl;;
 	for (int i = 0; i< 4; i++){
 		for (int j = 0; j < 4; j++){
 			if (i == j){
 				continue;
 			} else{
 				for (int k = 0; k < 4; k++){
-				if (i == k || j == k){
-					continue;
-				} else{
-					for (int l = 0; l < 4; l++){
-					if (l == i || l == j || l == k){
+					if (i == k || j == k){
 						continue;
 					} else{
-						char tour[6] = {city[i], city[j], city[k], city[l], city[i]}; // each tour
-						dist_sum = 0;
-						for (int m = 0; m < 5; m++){
-							char pth[3] = {tour[m], tour[m+1]}; // path between the city in the tour
-							dist_sum += dist[pth]; // sum over the distances of each city
-							
-						}
-						if (min == dist_sum){
-							cout << tour << " "; // choose the min distance one
-						}
+						for (int l = 0; l < 4; l++){
+							if (l == i || l == j || l == k){
+								continue;
+							} else{
+								char tour[6] = {city[i], city[j], city[k], city[l], city[i]}; // each tour
+								dist_sum = 0;
+								for (int m = 0; m < 5; m++){
+									char pth[3] = {tour[m], tour[m+1]}; // path between the city in the tour
+									dist_sum += dist[pth]; // sum over the distances of each city
+								}
+								if (min == dist_sum){
+									cout << tour << " "; // choose the min distance one
+								}
+							}
+						}	
 					}
-					
 				}	
-				}
-			}	
 			}
 		}
 	}

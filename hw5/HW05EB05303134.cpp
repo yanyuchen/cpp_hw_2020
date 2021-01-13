@@ -25,11 +25,10 @@ int main(){
 	dist["BD"] = dist["DB"] = 10;
 	dist["CD"] = dist["DC"] = 1;
 	
-	cout << "The four nearest visiting tours and their distance are as follows." << endl;
+	cout << "The four nearest visiting tours and their distance are as follows: " << endl;
 	for (int i = 0; i< 4; i++){ // the first city that starts in each iteration
 		min_dist = 10;
 		dist_sum = 0;
-		
 		for (int j = 0; j < 4; j++){ // the second city that is nearest to the first one
 			if (i != j){
 				char pth[3] = {city[i], city[j]};
@@ -43,7 +42,6 @@ int main(){
 		}
 		dist_sum += min_dist; // sum over the distances of each city
 		min_dist = 10;
-
 		for (int k = 0; k < 4; k++){ // the third city that is nearest to the second one
 			if (i != k && J != k){
 				char pth[3] = {city[J], city[k]};
@@ -57,7 +55,6 @@ int main(){
 		}
 		dist_sum += min_dist; // sum over the distances of each city
 		min_dist = 10;
-		
 		for (int l = 0; l < 4; l++){ // the last city that is nearest to the third one
 			if (l != i && l != J && l != K){
 				char pth[3] = {city[K], city[l]};
@@ -78,7 +75,7 @@ int main(){
 			min = dist_sum;
 		}
 	}
-	cout << "The shortest distance is thus " << min << "." << endl;
+	cout << "\nThe shortest distance is: " << min;
 	answer1 = min;
 	return 0;
 }
