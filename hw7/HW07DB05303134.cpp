@@ -6,23 +6,20 @@
 //================================================================
 
 #include <iostream>
-#include <cstdio>
-#include <cstdlib>
 #include <fstream>
 #include <string>
 #include <sstream>
 #include <ctime> // time_t
 using namespace std;
 
-int answer1; // Store the number of center cell (5,5) of solved puzzle A.
-int answer2; // Store the number of center cell (5,5) of solved puzzle B.
-int answer3; // Store the number of center cell (5,5) of solved puzzle C.
+int answer1; // store the number of center cell (5,5) of solved puzzle A
+int answer2; // store the number of center cell (5,5) of solved puzzle B
+int answer3; // store the number of center cell (5,5) of solved puzzle C
  
 bool FindUnassignedLocation(int grid[9][9], int &row, int &col);
 bool isSafe(int grid[9][9], int row, int col, int num);
 
-// assign values to all unassigned locations
-bool SolveSudoku(int grid[9][9], int &answer){
+bool SolveSudoku(int grid[9][9], int &answer){ // assign values to all unassigned locations
     int row, col;
     if (!FindUnassignedLocation(grid, row, col))
        return true;
@@ -42,8 +39,7 @@ bool SolveSudoku(int grid[9][9], int &answer){
     return false;
 }
 
-// if grid is empty
-bool FindUnassignedLocation(int grid[9][9], int &row, int &col){
+bool FindUnassignedLocation(int grid[9][9], int &row, int &col){ // if grid is empty
     for (row = 0; row < 9; row++)
         for (col = 0; col < 9; col++)
             if (grid[row][col] == 0)
@@ -51,24 +47,21 @@ bool FindUnassignedLocation(int grid[9][9], int &row, int &col){
     return false;
 }
  
-// if the row matches the given number
-bool UsedInRow(int grid[9][9], int row, int num){
+bool UsedInRow(int grid[9][9], int row, int num){ // if the row matches the given number
     for (int col = 0; col < 9; col++)
         if (grid[row][col] == num)
             return true;
     return false;
 }
  
-// it the column matches the given number
-bool UsedInCol(int grid[9][9], int col, int num){
+bool UsedInCol(int grid[9][9], int col, int num){ // if the column matches the given number
     for (int row = 0; row < 9; row++)
         if (grid[row][col] == num)
             return true;
     return false;
 }
  
-// if the 3x3 box matches the given number
-bool UsedInBox(int grid[9][9], int boxStartRow, int boxStartCol, int num){
+bool UsedInBox(int grid[9][9], int boxStartRow, int boxStartCol, int num){ // if the 3x3 box matches the given number
     for (int row = 0; row < 3; row++)
         for (int col = 0; col < 3; col++)
             if (grid[row+boxStartRow][col+boxStartCol] == num)
@@ -76,19 +69,16 @@ bool UsedInBox(int grid[9][9], int boxStartRow, int boxStartCol, int num){
     return false;
 }
  
-// whether it will be legal to assign num to the given row and col
-bool isSafe(int grid[9][9], int row, int col, int num){
-    return !UsedInRow(grid, row, num) && !UsedInCol(grid, col, num) &&
-           !UsedInBox(grid, row - row % 3 , col - col % 3, num);
+bool isSafe(int grid[9][9], int row, int col, int num){ // whether it will be legal to assign num to the given row and col
+    return !UsedInRow(grid, row, num) && !UsedInCol(grid, col, num) && !UsedInBox(grid, row - row % 3 , col - col % 3, num);
 }
- 
-// display the solution
-void printGrid(int grid[9][9]){
-    for (int row = 0; row < 9; row++)
-    {
-        for (int col = 0; col < 9; col++)
-            cout<<grid[row][col]<<"  ";
-        cout<<endl;
+
+void printGrid(int grid[9][9]){ // display the solution
+    for (int row = 0; row < 9; row++){
+        for (int col = 0; col < 9; col++){
+        	cout << grid[row][col] << "  ";	
+		}
+        cout << endl;
     }
 }
 
@@ -144,5 +134,7 @@ int main(){
 			idx++;
 			}
 	}
+	outfile.close();
+	infile.close();
     return 0;
 }

@@ -93,12 +93,12 @@ int main(){
     	bool check = true;
     	if (idx > 0){
     		for (int i = 0; i < idx; i++){
-    		if (Movie[i].getMovieTitle() == title){ // check if the movie has been rated previously
-    			Movie[i].addScore(score);
-    			check = false;
-    			break;
-			}
-		}	
+    			if (Movie[i].getMovieTitle() == title){ // check if the movie has been rated previously
+    				Movie[i].addScore(score);
+    				check = false;
+    				break;
+				}
+			}	
 		}
 		if (check){
 			Movie[idx] = movie;

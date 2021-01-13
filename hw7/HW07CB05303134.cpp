@@ -6,6 +6,7 @@
 //				 to label the data and saved them into a new text
 //				 file named Iris.out with three labels
 //================================================================
+
 #include<iostream>
 #include<fstream>
 #include<vector>
@@ -21,14 +22,12 @@ int answer3; // store the number of data in cluster C
 
 struct Tuple { // store the data from the file Iris.data
 	int attr0;
-	double attr1;
-	double attr2;
+	double attr1, attr2;
 	string attr3;
 };
  
 double getDisXY(Tuple t1, Tuple t2) { // calculate the distance
-	double dis = 0;
-	dis = sqrt((t1.attr1 - t2.attr1)*(t1.attr1 - t2.attr1) + (t1.attr2 - t2.attr2)*(t1.attr2 - t2.attr2));
+	double dis = sqrt((t1.attr1 - t2.attr1)*(t1.attr1 - t2.attr1) + (t1.attr2 - t2.attr2)*(t1.attr2 - t2.attr2));
 	return dis;
 }
 
@@ -84,8 +83,7 @@ void KMeans(vector<Tuple> tuples){
 		clusters[label].push_back(tuples[i]);
 		tuples[i].attr0 = label;
 	} 
-	double oldVar = -1;
-	double newVar = getVar(means, clusters);
+	double oldVar = -1, newVar = getVar(means, clusters);
 	while (abs(oldVar - newVar) >= 0.0001) { // terminal condition for the kmeans algorithm
 		for (int i = 0; i < k; i++) {
 			means[i] = getMeans(clusters[i]);
@@ -148,9 +146,8 @@ void KMeans(vector<Tuple> tuples){
  
 int main() {
 	srand(time(NULL));
-	string filename = "iris.data";
  	ifstream infile;
-	infile.open(filename.c_str());
+	infile.open("iris.data");
 	int count = 0;
 	vector<Tuple> tuples;
 	Tuple tuple;
@@ -166,6 +163,7 @@ int main() {
 			tuples.push_back(tuple);
 		}
 	}
+	infile.close();
 	KMeans(tuples); // implement the kmeans algorithm
 	return 0;
 } 
