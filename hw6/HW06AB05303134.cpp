@@ -11,16 +11,13 @@
 #include<time.h>
 using namespace std;
 
-int answer1, answer2, answer3, answer4;
-// Store the total high-card points of the first, second, third, and fourth player in the final run of dealing respectively
-ofstream outFile;
+int answer1, answer2, answer3, answer4; // store the total high-card points of the first, second, third, and fourth player in the final run of dealing respectively
 
 class poker
 {
 private:
 	char f[52];
-	int card[52];
-	int player1[13], player2[13], player3[13], player0[13], cnt1 = 0, cnt2 = 0, cnt3 = 0, cnt0 = 0;
+	int card[52], player1[13], player2[13], player3[13], player0[13], cnt1 = 0, cnt2 = 0, cnt3 = 0, cnt0 = 0;
 public:
 	poker(){
 		srand(time(NULL)); // shuffle the deck
@@ -83,13 +80,11 @@ public:
 			}
 		}
 	}
-	void show(int num) // show the player's cards
-	{
-		int i;
-		for (i = 0; i<13; i++)
-		{
-			switch (num)
-			{
+	
+	void show(int num){ // show the player's cards
+		ofstream outFile;
+		for (int i = 0; i < 13; i++){
+			switch (num){
 			case 1:
 			{	cout << f[player1[i]] << ":";
 			switch (card[player1[i]])
@@ -224,22 +219,19 @@ public:
 };
 
 int main(){
-	string filename = "CardGame.txt"; // put the filename up front
-	outFile.open(filename.c_str());
-	answer1 = 0;
-	answer2 = 0;
-	answer3 = 0;
-	answer4 = 0;
+	ofstream outFile;
+	outFile.open("CardGame.txt"); // read the file CardGame.txt
+	answer1 = answer2 = answer3 = answer4 = 0;
 	poker a;
 	a.show(0);
 	a.show(1);
 	a.show(2);
 	a.show(3);
-	cout << "The high-card points of the first player in the final run of dealing are " << answer1 << endl;
+	cout << "\nThe high-card points of the first player in the final run of dealing are " << answer1 << endl;
 	cout << "The high-card points of the second player in the final run of dealing are " << answer2 << endl;
 	cout << "The high-card points of the third player in the final run of dealing are " << answer3 << endl;
 	cout << "The high-card points of the fourth player in the final run of dealing are " << answer4 << endl;
-	outFile << "The high-card points of the first player in the final run of dealing are " << answer1 << endl;
+	outFile << "\nThe high-card points of the first player in the final run of dealing are " << answer1 << endl;
 	outFile << "The high-card points of the second player in the final run of dealing are " << answer2 << endl;
 	outFile << "The high-card points of the third player in the final run of dealing are " << answer3 << endl;
 	outFile << "The high-card points of the fourth player in the final run of dealing are " << answer4 << endl;

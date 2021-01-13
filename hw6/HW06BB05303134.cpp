@@ -1,7 +1,7 @@
 //================================================================
 //  PROGRAMMER : yanyu chen
 //  DATE       : 2020-12-22
-//  FILENAME   : HW06CB0303134.CPP 
+//  FILENAME   : HW06BB0303134.CPP 
 //  DESCRIPTION: This is a program to reads a document in English and calculate
 //				 the reading level of the document.
 //================================================================
@@ -13,8 +13,8 @@
 #include <vector>
 using namespace std;
 
-double answer1 = 0; // Store the average rank of Document.txt file
-int answer2 = 0; // Store the number of words in Document.txt which cannot be found in the dictionary file Dictionary_1000.txt
+double answer1 = 0; // store the average rank of Document.txt file
+int answer2 = 0; // store the number of words in Document.txt which cannot be found in the dictionary file Dictionary_1000.txt
 
 int findRank(string *dictionary, string word); // Search the word in the *dictionary and return the rank of the word. Return the rank 1001 if the word is not in the *dictionary
 void saveResult(int *rank, string outFileName); // The int *rank stores the rank of all words in the document file. The function saves the result to an output file outFileName
@@ -24,8 +24,7 @@ int main(){
 	string a;
 	ifstream infile1, infile2;         // inFile is an istream object
 	infile1.open("Dictionary_1000.txt");
-	while (getline(infile1, a, '\n')) // keep processing sentences
-	{
+	while (getline(infile1, a, '\n')){ // keep processing sentences
 		string b;
 		int i = 0;
 		stringstream ss(a);
@@ -37,8 +36,8 @@ int main(){
 			i %= 2;
 		}
 	}
-	string *dictionary;
-	dictionary = new string [dict.size()];
+	infile1.close();
+	string *dictionary = new string [dict.size()];
 	for (int i = 0; i < int(dict.size()); i++){
 		dictionary[i] = dict[i];
 	} 
@@ -58,14 +57,12 @@ int main(){
 		}
 		rk.push_back(0); // insult 0 for the format of a new line	
 	}
-	int *rank;
-	rank = new int [rk.size()];
+	infile2.close();
+	int *rank = new int [rk.size()];
 	for (int i = 0; i < int(rk.size()); i++){
 		rank[i] = rk[i];
 	} 
-	
 	saveResult(rank, "Result.txt");
-	
 	for (int i = 0; i < 397; i++){ // display the result on screen
 		if (rank[i] == 0){
 			cout << "\n";	
@@ -73,8 +70,7 @@ int main(){
 			cout << rank[i] << " ";
 		}
 	}
-	cout << "\n";
-	cout << "The average rank is " << answer1 << ".";
+	cout << "\nThe average rank is " << answer1;
 	return 0;
 }
 
@@ -98,7 +94,7 @@ int findRank(string *dictionary, string word){
 void saveResult(int *rank, string outFileName){
 	double sum = 0, total = 0;
 	ofstream outFile;
-	outFile.open(outFileName.c_str());
+	outFile.open(outFileName);
 	for (int i = 0; i < 397; i++){ // store the rank in the required format
 		if (rank[i] == 0){
 			outFile << "\n";	
@@ -109,8 +105,8 @@ void saveResult(int *rank, string outFileName){
 		}
 	}
 	answer1 = sum/total;
-	outFile << "\n";
-	outFile << "The average rank is " << answer1 << ".";
+	outFile << "\nThe average rank is " << answer1;
+	outFile.close();
 }
 
 
