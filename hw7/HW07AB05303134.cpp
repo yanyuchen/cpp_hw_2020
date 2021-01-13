@@ -9,27 +9,25 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <algorithm> // reverse
+#include <algorithm>
 #include <set>
 using namespace std;
 
 int answer1, answer2;
-string change(string); // turn the string into the lower case
 
 int main(){
 	ifstream infile;
-	string filename = "words.txt";
-	infile.open(filename.c_str()); // read the file words.txt
+	infile.open("words.txt"); // read the file words.txt
 	int total = 0; // count the total number of words
-	string b, c, d = "";
+	string b, d = "";
 	set<string>s;
 	set<string>::iterator it;
 	while (getline(infile, b,'\n')){
 		total++;
-		b = change(b);
+		transform(b.begin(), b.end(), b.begin(), ::tolower); // turn the string into the lower case
 		it = s.find(b); // find the location
 		if (it == s.end()){
-			c = b;
+			string c = b;
 			reverse(c.begin(), c.end()); // reverse the lower-letter string
 			s.insert(c);
 		}
@@ -47,12 +45,4 @@ int main(){
 	answer1 = total;
 	answer2 = d.length();
 	return 0;
-}
-
-string change(string a){
-	for (int j = 0; j < int(a.length()); j++){
-		if (a[j] < 91)
-			a[j] = a[j] + 32;
-	}
-	return a;
 }
