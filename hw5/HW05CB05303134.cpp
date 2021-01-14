@@ -27,17 +27,11 @@ int main(){
 	cout << "All the possible tours and their distance: " << endl;
 	for (int i = 0; i< 4; i++){
 		for (int j = 0; j < 4; j++){
-			if (i == j){
-				continue;
-			} else{
+			if (i != j){
 				for (int k = 0; k < 4; k++){
-					if (i == k || j == k){
-						continue;
-					} else{
+					if (i != k && j != k){
 						for (int l = 0; l < 4; l++){
-							if (l == i || l == j || l == k){
-								continue;
-							} else{
+							if (l != i && l != j && l != k){
 								char tour[6] = {city[i], city[j], city[k], city[l], city[i]}; // each tour
 								dist_sum = 0;
 								for (int m = 0; m < 5; m++){
@@ -58,17 +52,11 @@ int main(){
 	cout << "\nThe miniance distance is " << min << " with the tour(s): " << endl;;
 	for (int i = 0; i< 4; i++){
 		for (int j = 0; j < 4; j++){
-			if (i == j){
-				continue;
-			} else{
+			if (i != j){
 				for (int k = 0; k < 4; k++){
-					if (i == k || j == k){
-						continue;
-					} else{
+					if (i != k && j != k){
 						for (int l = 0; l < 4; l++){
-							if (l == i || l == j || l == k){
-								continue;
-							} else{
+							if (l != i && l != j && l != k){
 								char tour[6] = {city[i], city[j], city[k], city[l], city[i]}; // each tour
 								dist_sum = 0;
 								for (int m = 0; m < 5; m++){
